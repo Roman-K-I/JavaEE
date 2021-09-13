@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<h1>Product List</h1>
+<a href="addProduct">Add product</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th th:width="50">Number</th>
+            <th th:width="300">Title</th>
+            <th th:width="150">Price</th>
+            <th th:width="100">Action</th>
+        </tr>
+        <tr th:each ="product : ${products}">
+            <td th:utext="${product.id}">...</td>
+            <td th:utext="${product.title}">...</td>
+            <td th:utext="${product.price}">...</td>
+            <td>
+                <a th:href="@{'/delete/' + ${product.id} + '/' + ${page.number}}" >Remove</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<a th:each="i : ${#numbers.sequence( 0, page.totalPages - 1)}">
+                <a th:href="@{'/productList?page=' + ${ i }}" th:text="'Page ' + ${ i + 1}">...</a></a>
+</body>
+</html>

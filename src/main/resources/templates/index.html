@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<h1 th:utext="${message}">...</h1>
+<a th:href="@{/productList}">Product list</a>
+<a th:href="@{/userInfo}">User information</a>
+<a sec:authorize="hasRole('ADMIN')"  th:href="@{/admin}">ADMIN</a>
+
+</body>
+</html>

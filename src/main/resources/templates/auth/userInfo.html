@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<html>
+<body>
+<h1>User information</h1>
+<a>User name: </a>
+<a th:utext="${userName}">...</a>
+<br/><br/>
+<a>Role: </a>
+<a th:utext="${role}">...</a>
+</body>
+</html>

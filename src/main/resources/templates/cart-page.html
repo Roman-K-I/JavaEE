@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shopping cart</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.3.1/dist/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<body>
+
+<div th:replace="~{navigation :: navi(ShoppingCart)}"/>
+
+<div class="container">
+    <br>
+    <h1 th:utext="${title}"></h1>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>Категория</th>
+            <th>Название товара</th>
+            <th>Количество</th>
+            <th></th>
+            <th></th>
+            <th>Цена</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tr class="responsive-row" th:each="item : ${items}">
+            <td th:text="${item.product.category.title}"/>
+            <td>
+                <span style="font-weight: bold;" th:text="${item.product.title}"></span>
+                <br>
+                <span th:text="${item.product.shortDescription}"></span>
+            </td>
+            <td th:text="${item.num}">
+            </td>
+            <td>
+                <a th:href="@{'/cart/remove/' + ${item.product.id}}">-</a>
+            </td>
+            <td>
+                <a th:href="@{'/cart/add/' + ${item.product.id} + '/true'}">+</a>
+            </td>
+            <td th:text="${item.product.price}"/>
+            <td>
+                <a th:href="@{'/cart/removeItem/' + ${item.product.id}}">Удалить из корзины</a>
+            <td/>
+        </tr>
+        <td/>
+        <td/>
+        <td th:text="${numProducts}"/>
+        <td/>
+        <td/>
+        <td th:text="${sum}"/>
+        <td th:if="${!isEmpty}">
+            <a th:href="@{'/cart/clear'}">Очистить корзину</a>
+        <td/>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

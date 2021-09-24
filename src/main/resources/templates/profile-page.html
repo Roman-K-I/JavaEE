@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.3.1/dist/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{navigation :: navi(Profile)}"/>
+
+<div class="container">
+    <br>
+    <h1>User information</h1>
+    <hr>
+
+    <a th:each="role : ${user.roles}">
+        <a th:utext="${role.name}"></a>
+        <br>
+    </a>
+    <hr>
+
+    <a>First name: </a>
+    <a th:utext="${user.firstName}"></a>
+    <hr>
+
+    <a>Last name: </a>
+    <a th:utext="${user.lastName}"></a>
+    <hr>
+
+    <a>Email name: </a>
+    <a th:utext="${user.email}"></a>
+    <hr>
+
+    <a>Phone: </a>
+    <a th:utext="${user.phone}"></a>
+    <hr>
+
+</div>
+
+</body>
+</html>
